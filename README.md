@@ -1,2 +1,3 @@
 # hello-world
-To create a new repository
+To create a new repository.
+I'm a child.

@@ -1,9 +1,6 @@
 from PIL import Image
 from PIL import ImageGrab
-import pytesseract
-import pyautogui
-import time
-import re
+import pytesseract, pyautogui, time, re
 
 
 def run():
@@ -19,7 +16,7 @@ def run():
 
     # 选择目标
     pyautogui.keyDown('win')
-    moniqi_pos = pyautogui.locateOnScreen(r'D:\Project\git\AutoArknights\moniqi.png')
+    moniqi_pos = pyautogui.locateOnScreen('moniqi.png')
     if moniqi_pos == None:
         goto_pos = 320, 1060
     else:
@@ -28,8 +25,8 @@ def run():
     pyautogui.click(goto_pos)
     pyautogui.click(308, 995)
 
-    # #点击左下
-    pyautogui.click(467, 995)
+    # #点击左下招聘候选人
+    # pyautogui.click(467, 995)
     # #点击右上跳过键
     # pyautogui.click(1831, 64)
     # pyautogui.PAUSE = 1
@@ -44,7 +41,7 @@ def run():
     # 计数器
     counter = 0
     while counter > (switch / 2 + 1):
-        image = pyautogui.screenshot(r'D:\Project\git\AutoArknights\1_1.png', region=(564, 541, 216, 69))
+        image = pyautogui.screenshot(r'1_1.png', region=(564, 541, 216, 69))
         # print(im)
         # image = Image.open("bf/text.png")
         # print(image)
@@ -59,10 +56,10 @@ def run():
             counter += 1
         i += i
 
-    pyautogui.keyDown('win')
-    pyautogui.keyUp('win')
-    pyautogui.moveTo(370, 1060, duration = 0.1)
-    pyautogui.click()
+    # pyautogui.keyDown('win')
+    # pyautogui.keyUp('win')
+    # pyautogui.moveTo(370, 1060, duration = 0.1)
+    # pyautogui.click()
 
     # pyautogui.mouseInfo()
     '''

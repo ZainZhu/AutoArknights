@@ -1,4 +1,4 @@
 #!/uer/bin/env python
 # -*- coding:utf-8 -*-
 # Author: Jython
-# TODO: Make a mian Architecture
+# TODO: Make a main Architecture

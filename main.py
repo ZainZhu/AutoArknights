@@ -6,7 +6,7 @@
 from PIL import Image
 from PIL import ImageGrab
 # 图像处理/展现的相关函数库
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import pytesseract
 import pyautogui
 import re

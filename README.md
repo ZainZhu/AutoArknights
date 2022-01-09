@@ -1,4 +1,5 @@
-# AutoArknights 
+# AutoArknights
+Current Version: B0.1
 The goal of this project is to provide automated convenience for Arknights players.
 
 The automation project is written by python to run the source code requires the following three-party library support:

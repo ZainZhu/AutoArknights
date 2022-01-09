@@ -14,7 +14,7 @@ import time
 import os
 import yaml
 
-with open(r'config.yaml', encoding="UTF-8") as f:
+with open(r'../config.yaml', encoding="UTF-8") as f:
     config = yaml.full_load(f)
 pyautogui.keyDown('win')
 

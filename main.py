@@ -1,18 +1,30 @@
+#!/uer/bin/env python
+# -*- coding:utf-8 -*-
+# Author: Jython
+# Utilities 相关函式库
+
 from PIL import Image
 from PIL import ImageGrab
+# 图像处理/展现的相关函数库
+import matplotlib.pyplot as plt
 import pytesseract
 import pyautogui
-import time
 import re
+import time
+import os
+import yaml
 
+with open(r'config.yaml', encoding="UTF-8") as f:
+    config = yaml.full_load(f)
 
+print("END")
 def run():
     # 获取内容
     all = ["先锋干员", "狙击干员", "医疗干员", "术师干员", "近卫干员", "重装干员", "辅助干员", "输出",
            "防护", "生存", "治疗", "费用回复", "群攻", "支援机械", "新手", "减速", "特种干员", '支援',
            "快速复活", "削弱", "位移", "资深干员", "召唤", "控场", "爆发", "高级资深干员"]
     yiban = ["先锋干员", "狙击干员", "医疗干员", "术师干员", "近卫干员", "重装干员", "辅助干员", "输出",
-             "防护", "生存", "治疗", "费用回复", "群攻", "支援机械", "新手", "减速"]
+             "防护", "生存", "治疗", "费用回复", "群攻", "支援机械", "新手", "减速"] 
     zhuyao = ["特种干员", '支援', "快速复活", "削弱", "位移"]
     zishen = ["资深干员", "召唤", "控场", "爆发"]
     gaozi = ["高级资深干员"]
@@ -64,14 +76,35 @@ def run():
     pyautogui.moveTo(370, 1060, duration = 0.1)
     pyautogui.click()
 
-    # pyautogui.mouseInfo()
-    '''
 
-    pyautogui.mouseInfo()
-    705, 580
-    '''
+class AutoArknights:
+    def __init__(self):
+        print("auto_ark_nights init.")
 
-    pass
+
+# 根目录路径
+root_dir = os.getcwd()
+# 训练/验证用的资料目录
+data_path = os.path.join(root_dir, 'image')
+# 测试用的图像
+test_image = os.path.join(data_path, 'ASCII_Code.png')
+
+
+# 载入图像
+# image = Image.open(test_image)
+
+# 存储图像并转换格式(jpg->png)
+# image.save(os.path.join(data_path, 'new_image.png'))
+#
+# plt.imshow(image)
+# plt.show()
+
+# pyautogui.mouseInfo()
+'''
+pyautogui.mouseInfo()
+705, 580
+'''
+pass
 
 
 if __name__ == '__main__':

@@ -8,19 +8,19 @@ import abc
 
 
 class BaseAction(metaclass=abc.ABCMeta):
-    @abc.abstractmethod()
+    @abc.abstractmethod
     def waiting_time(self):
         pass
 
-    @abc.abstractmethod()
+    @abc.abstractmethod
     def getting_information(self):
         pass
 
-    @abc.abstractmethod()
+    @abc.abstractmethod
     def instruction_operation(self):
         pass
 
-    @abc.abstractmethod()
+    @abc.abstractmethod
     def execute_action(self):
         pass
     

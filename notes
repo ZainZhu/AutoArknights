@@ -4,8 +4,15 @@ b0.1.0 - 01_09_1556 01 Qjq 版本架构构建
 
 b0.1.0 - 01_09 1832 01 Qjq 新增行为类规范
     新增抽象类BaseAction
-    行为类需要继承BaseAction按照固定规范执行操作
-    目前行为类有: ./source/.tool.Auto_Ark()
+    所有行为指令集（以类的形式）需要继承BaseAction按照固定规范执行操作
+    目前没有行为类，用./source/.tool.Auto_Ark()行为类测试效果
 
 b0.1.0 - 01_09 1850 02 Qjq 验证完毕准备提交GitHub
     b0.1.0 - 01_09 1850 02 Qjq The code is verified and ready to commit to GitHub 
+
+b0.1.1 - 01_13 1803 01 Qjq 完善架构&验证完毕准备提交GitHub
+    b0.1.1 - 01_13 1803 01 Qjq Improve the Architecture & after verification, prepare to submit GitHub
+    所有行为指令集（以类的形式）需要继承BaseAction按照固定规范执行操作
+    目前的指令集有公开招募PublicRecruitment（类），用from source.abc import BaseAction导入基类
+    已经用PublicRecruitment类，通过提交测试
+    

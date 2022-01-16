@@ -1,16 +1,30 @@
 # 公开招募
-
+import time
 from source.abc import BaseAction
 from source import setup
+
 
 class PublicRecruitment(BaseAction):
     def __init__(self):
         # 获取内容
         self.read_config()
+        self.finished = False
+        self.next = 'investment_rystem'
+        self.timer = 0
 
         pass
 
+    def update(self):
+        # if self.timer <= 20:
+        #     self.timer = time.perf_counter()
+        #     print(self.timer)
+        # else:
+        self.finished = True
+        #     self.timer = 0
+        pass
+
     def __call__(self, *args, **kwds):
+        print("+" * 25 + "公开招募" + "+" * 25)
         self.waiting_time()
         self.getting_information()
         self.instruction_operation()

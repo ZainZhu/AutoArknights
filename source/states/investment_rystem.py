@@ -1,4 +1,6 @@
 # 前瞻性投资系统
+import os
+import time
 from source.abc import BaseAction
 from source import setup
 
@@ -7,10 +9,24 @@ class InvestmentRystem(BaseAction):
     def __init__(self):
         # 获取内容
         self.read_config()
+        self.finished = False
+        self.next = 'public_recruitment'
+
 
         pass
 
+    # TODO: 没有设计好
+    def update(self):
+        # if self.timer <= 20:
+        #     self.timer = time.perf_counter()
+        #     print(self.timer)
+        # else:
+        self.finished = True
+        #     self.timer = 0
+        pass
+
     def __call__(self, *args, **kwds):
+        print("+" * 25 + "前瞻性投资系统" + "+" * 25)
         self.waiting_time()
         self.getting_information()
         self.instruction_operation()
@@ -18,11 +34,23 @@ class InvestmentRystem(BaseAction):
         pass
 
     def waiting_time(self):
-        print("将在待机时间结束后运行")
+        time.sleep(0)
+        print("将在待机0s时间后运行")
         pass
 
     def getting_information(self):
         print("负责获取程序窗口")
+        with os.popen(r'adb devices', 'r') as f:
+            devices = f.read()
+        # devices = os.system('adb devices')
+        devices = devices.strip().split("List of devices attached")[-1].split("\n")[1:]
+        for i in devices:
+            # print(i)
+            x = i.split("\tdevice")[0]
+            print(x)
+        # print(type(devices))
+        # print(devices)
+        
         print("负责获取程序当前运行状态")
         print("负责调整程序运行状态")
         print("负责获取程序之后操作所需的信息")

@@ -17,7 +17,7 @@ b0.1.1 - 01_13 1803 01 Qjq 完善架构&验证完毕准备提交GitHub
     已经用PublicRecruitment类，通过提交测试
     
 b0.1.1 - 01_16 2138 01 Qjq 完善架构&验证完毕准备提交GitHub
-    b0.1.1 - 01_16 2138 01 Qjq Improve the Architecture & after verification, prepare to submit GitHub
+    b0.1.1 - 01_16 2342 02 Qjq Improve the Architecture & after verification, prepare to submit GitHub
     所有行为指令集（以类的形式）需要继承BaseAction按照固定规范执行操作
     目前的指令集有公开招募PublicRecruitment（类），InvestmentRystem（类）
     用from source.abc import BaseAction导入基类

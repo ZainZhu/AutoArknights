@@ -1,4 +1,4 @@
-#!/uer/bin/env python
+
 # -*- coding:utf-8 -*-
 # Author: Jython
 # Utilities 相关函式库
@@ -14,8 +14,11 @@ import time
 import os
 import yaml
 
-with open(r'../config.yaml', encoding="UTF-8") as f:
+with open('../source/data/config.yaml', encoding="UTF-8") as f:
     config = yaml.full_load(f)
-pyautogui.keyDown('win')
+# pyautogui.keyDown('win')
 
 print("END")
+print(time.perf_counter())
+print(time.perf_counter())
+# print(time.sleep())

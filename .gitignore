@@ -3,3 +3,4 @@
 __pycache__
 # Pycharm project folder, named '.idea'
 .idea
+main.py

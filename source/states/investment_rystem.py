@@ -1,9 +1,9 @@
-# 公开招募
-
+# 前瞻性投资系统
 from source.abc import BaseAction
 from source import setup
 
-class PublicRecruitment(BaseAction):
+
+class InvestmentRystem(BaseAction):
     def __init__(self):
         # 获取内容
         self.read_config()

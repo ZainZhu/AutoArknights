@@ -1,12 +1,14 @@
-# 工具和脚本
-
-
+# 工具和脚本主控
 
 
 class Auto_Ark():
-    obj = None
+    def __init__(self, state_dict, state_state):
+        self.state_dict = state_dict
+        self.state_state = self.state_dict[state_state]
 
-    def __call__(self, *args, **kwds):
+        self.obj = self.state_state
+
+    def __call__(self):
         self.obj()
         pass
 

@@ -9,6 +9,17 @@ import abc
 
 class BaseAction(metaclass=abc.ABCMeta):
     @abc.abstractmethod
+    def __init__(self):
+        self.finished = False
+        self.next = None
+        self.timer = 0
+        pass
+
+    @abc.abstractmethod
+    def update(self, *args, **kwds):
+        pass
+
+    @abc.abstractmethod
     def waiting_time(self):
         pass
 
@@ -23,5 +34,5 @@ class BaseAction(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def execute_action(self):
         pass
-    
+
     ...

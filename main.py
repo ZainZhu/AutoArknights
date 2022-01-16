@@ -3,14 +3,20 @@
 
 
 # 工具主入口
-# 工具和脚本主控q
+
+from source import tools
 from source import tools
 from source.states import public_recruitment
+from source.states import investment_rystem
 
 
 def main():
-    auto_ark = tools.Auto_Ark()
-    auto_ark.obj = public_recruitment.PublicRecruitment()
+    state_dict = {
+        'public_recruitment': public_recruitment.PublicRecruitment(),
+        'investment_rystem': investment_rystem.InvestmentRystem(),
+    }
+    auto_ark = tools.Auto_Ark(state_dict, 'investment_rystem')
+
     auto_ark()
 
 

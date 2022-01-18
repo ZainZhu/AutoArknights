@@ -40,16 +40,7 @@ class InvestmentRystem(BaseAction):
 
     def getting_information(self):
         print("负责获取程序窗口")
-        with os.popen(r'adb devices', 'r') as f:
-            devices = f.read()
-        # devices = os.system('adb devices')
-        devices = devices.strip().split("List of devices attached")[-1].split("\n")[1:]
-        for i in devices:
-            # print(i)
-            x = i.split("\tdevice")[0]
-            print(x)
-        # print(type(devices))
-        # print(devices)
+        print(setup.C.device_name_list)
         
         print("负责获取程序当前运行状态")
         print("负责调整程序运行状态")

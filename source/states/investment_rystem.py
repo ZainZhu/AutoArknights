@@ -3,6 +3,7 @@ import os
 import time
 from source.abc import BaseAction
 from source import setup
+from source import tools
 
 
 class InvestmentRystem(BaseAction):
@@ -11,22 +12,18 @@ class InvestmentRystem(BaseAction):
         self.read_config()
         self.finished = False
         self.next = 'public_recruitment'
+        self.device_name = None
 
 
         pass
 
     # TODO: 没有设计好
     def update(self):
-        # if self.timer <= 20:
-        #     self.timer = time.perf_counter()
-        #     print(self.timer)
-        # else:
-        self.finished = True
-        #     self.timer = 0
         pass
 
     def __call__(self, *args, **kwds):
         print("+" * 25 + "前瞻性投资系统" + "+" * 25)
+        print(self.finished)
         self.waiting_time()
         self.getting_information()
         self.instruction_operation()
@@ -40,8 +37,10 @@ class InvestmentRystem(BaseAction):
 
     def getting_information(self):
         print("负责获取程序窗口")
-        print(setup.C.device_name_list)
-        
+        # print(setup.C.device_name_list)
+        print(self.device_name)
+        adb_helper = tools.AdbHelper(self.device_name)
+        adb_helper.screen_cap()
         print("负责获取程序当前运行状态")
         print("负责调整程序运行状态")
         print("负责获取程序之后操作所需的信息")
@@ -63,6 +62,9 @@ class InvestmentRystem(BaseAction):
         print("负责再次验证程序当前运行状态")
         print("负责报错和通知执行者")
         print("负责记录日志")
+        x = input("任务是否完成？：")
+        if x == "True":
+            self.finished = True
         pass
 
     def read_config(self):

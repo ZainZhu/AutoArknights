@@ -9,8 +9,9 @@ class PublicRecruitment(BaseAction):
         # 获取内容
         self.read_config()
         self.finished = False
-        self.next = 'investment_rystem'
+        self.next = 'end'
         self.timer = 0
+        self.device_name = None
 
         pass
 
@@ -19,12 +20,13 @@ class PublicRecruitment(BaseAction):
         #     self.timer = time.perf_counter()
         #     print(self.timer)
         # else:
-        self.finished = True
+        # self.finished = True
         #     self.timer = 0
         pass
 
     def __call__(self, *args, **kwds):
-        print("+" * 25 + "公开招募" + "+" * 25)
+        print("-" * 25 + "公开招募" + "-" * 25)
+        print(self.finished)
         self.waiting_time()
         self.getting_information()
         self.instruction_operation()
@@ -37,6 +39,7 @@ class PublicRecruitment(BaseAction):
 
     def getting_information(self):
         print("负责获取程序窗口")
+        
         print("负责获取程序当前运行状态")
         print("负责调整程序运行状态")
         print("负责获取程序之后操作所需的信息")
@@ -58,6 +61,10 @@ class PublicRecruitment(BaseAction):
         print("负责再次验证程序当前运行状态")
         print("负责报错和通知执行者")
         print("负责记录日志")
+        x = input("任务是否完成？：")
+        if x == "True":
+            self.finished = True
+        pass
         pass
 
     def read_config(self):

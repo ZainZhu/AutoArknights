@@ -25,3 +25,43 @@ b0.1.1 - 01_16 2138 01 Qjq 完善架构&验证完毕准备提交GitHub
 
 b0.1.1 - 01_18 1925 01 Qjq 临时提交至GitHub
     b0.1.1 - 01_18 1925 01 Qjq Provisional commit to GitHub
+
+
+b0.1.1 - 01_21 1800 01 Qjq 完善架构&验证完毕准备提交GitHub
+    b0.1.1 - 01_21 1815 01 Qjq Improve the Architecture & after verification, prepare to submit GitHub
+    # 查看当前窗口运行的app
+    adb -s 127.0.0.1:21503 shell dumpsys window w |findstr \/ |findstr name=
+    执行结果：
+        目标app  |  mSurface=Surface(name=com.hypergryph.arknights.bilibili/com.u8.sdk.SplashActivity)
+        mSurface=Surface(name=com.cyanogenmod.filemanager/com.cyanogenmod.filemanager.activities.NavigationActivity)
+        mSurface=Surface(name=com.microvirt.launcher2/com.microvirt.launcher.Launcher)
+    # 查看所有app
+    adb -s 127.0.0.1:21503 shell pm list package
+    执行结果：
+        package:com.android.providers.telephony
+        package:com.android.providers.calendar
+        package:com.android.providers.media
+        package:com.android.wallpapercropper
+        package:com.android.documentsui
+        package:com.android.externalstorage
+        ……
+        目标app  |  package:com.hypergryph.arknights.bilibili
+        ……
+
+    # 获取主(要启动的)Activity | adb shell dumpsys package [app包名]
+    adb -s 127.0.0.1:21503 shell dumpsys package com.hypergryph.arknights.bilibili
+    执行结果：
+        Activity Resolver Table:
+            Non-Data Actions:
+                android.intent.action.MAIN:
+                    29a9843 com.hypergryph.arknights.bilibili/com.u8.sdk.SplashActivity filter d3e9a58  #  目标app: com.hypergryph.arknights.bilibili/com.u8.sdk.SplashActivity
+                    Action: "android.intent.action.MAIN"
+                    Category: "android.intent.category.LAUNCHER"
+                    AutoVerify=false
+                com.sina.weibo.sdk.action.ACTION_SDK_REQ_STORY:
+                ……
+
+    # 启动对应app
+    adb -s 127.0.0.1:21503 shell am start com.hypergryph.arknights.bilibili/com.u8.sdk.SplashActivity
+    执行结果：
+        Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.hypergryph.arknights.bilibili/com.u8.sdk.SplashActivity }

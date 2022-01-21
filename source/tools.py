@@ -2,28 +2,78 @@
 
 import os
 import time
+import shutil
 
 
 class Auto_Ark():
-    def __init__(self, state_dict, state_state):
+    """
+    [中枢，用于支撑多态框架，通过调用特定的类达到对应结果]
+
+    目前可调用:
+        可调用类: ['public_recruitment', 'investment_rystem']
+    """
+
+    def __init__(self, device_name: str, state_dict: dict, state_state: str):
+        """
+        [使用传入关键字调用对应类]
+
+        初始化，传入设备名称，执行内容字典，字典关键字
+
+        使用执行内容字典的关键字读取字典对应值，该值为当前实例 state(运行阶段)
+
+        将调用的对象更新为当前实例state(运行阶段)
+
+        返回:
+            None
+
+        """
         self.state_dict = state_dict
         self.state = self.state_dict[state_state]
         self.obj = self.state
+        self.obj.device_name = device_name
 
     def update(self):
+        """
+        [更新]
+
+        当调用时判断实力对象的 state(运行阶段) 是否完成
+
+            下一阶段 等于 调运对象的下一阶段
+
+            当前阶段的状态重置为未完成
+
+            state(运行阶段) 切换至 调运对象的(next_state)下一阶段
+
+            将调用的对象更新为当前实例state(运行阶段)
+
+        调用：
+            调用对象自己的更新方法
+
+        返回:
+            None
+
+        """
         if self.state.finished:
-            next_state = self.state.next
-            self.state.finished = False
+            next_state = self.obj.next
+            self.obj.finished = False
             self.state = self.state_dict[next_state]
             self.obj = self.state
-        self.state.update()
+        self.obj.update()
 
     def __call__(self):
-        self.obj()
-        # self.update()
+
+        # while True:
+        for n in range(4):
+            print(n)
+            self.obj()
+            self.update()
+            if self.obj.finished:
+                self.obj()
+                break
         pass
 
     def waiting_time(self):
+        
         self.obj.waiting_time()
         pass
 
@@ -57,7 +107,7 @@ def read_device_name() -> list:
         for i in devices:
             # print(i)
             x = i.split("\tdevice")[0]
-            print(x)
+            # print(x)
             device_name_list.append(x)
         return device_name_list
 
@@ -87,7 +137,7 @@ class AdbHelper:
             except OSError as e:
                 print("Error: %s - %s." % (e.filename, e.strerror))
         # 创建文件夹
-        os.mkdir(self.device_dir)
+        os.makedirs(self.device_dir)
 
     def screen_cap(self) -> None:
         """

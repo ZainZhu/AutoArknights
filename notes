@@ -63,5 +63,49 @@ b0.1.1 - 01_21 1800 01 Qjq 完善架构&验证完毕准备提交GitHub
 
     # 启动对应app
     adb -s 127.0.0.1:21503 shell am start com.hypergryph.arknights.bilibili/com.u8.sdk.SplashActivity
+    adb -s 127.0.0.1:62001 shell am start com.hypergryph.arknights.bilibili/com.u8.sdk.SplashActivity
     执行结果：
         Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.hypergryph.arknights.bilibili/com.u8.sdk.SplashActivity }
+    
+    # 查看设备名
+    adb devices
+
+    # 点击对应位置
+    adb -s 127.0.0.1:21503 shell input tap 955 1015
+    adb -s 127.0.0.1:62001 shell input tap 955 1015
+
+    # 模拟滑动 前四个数为坐标点，后面是滑动的时间（单位毫秒）
+    adb -s 127.0.0.1:21503 shell input swipe 1735 550 100 550 1310
+
+    # tesseract安装包下载地址
+    https://digi.bib.uni-mannheim.de/tesseract
+
+b0.1.1 - 01_26 1951 01 Qjq 更新日志、记录思路,备份中记录了一些互联网上其他人设计的自动化脚本
+    b0.1.1 - 01_26 1951 01 Qjq Update logs, record ideas
+
+    # 中文路径无法识别
+    aircv无法识别中文路径
+
+    """ 原方案
+    # -*- coding: utf-8 -*-
+    import aircv as ac
+    import numpy as np
+    
+    #从temp.jpeg里找出无信号.jpeg
+    imsrc = ac.imread('F:\\temp.jpeg')#读源图
+    imobj = ac.imread('F:\\无信号.jpeg')#读目标图
+    pos = ac.find_template(imsrc, imobj)
+    print(pos)
+    """
+
+    """ 修改后
+    # -*- coding: utf-8 -*-
+    import cv2
+    import aircv as ac
+    import numpy as np
+    
+    imsrc = ac.imread('F:\\temp.jpeg') #读目标图
+    imobj = cv2.imdecode(np.fromfile('F:\\无信号.jpeg',dtype=np.uint8),-1) #读取中文路径及名称
+    pos = ac.find_template(imsrc, imobj)#查找目标图中出现的源特征图
+    print(pos)
+    """

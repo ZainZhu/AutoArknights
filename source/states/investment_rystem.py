@@ -11,7 +11,7 @@ class InvestmentRystem(BaseAction):
         # 获取内容
         self.read_config()
         self.finished = False
-        self.next = 'public_recruitment'
+        self.next = 'end'
         self.device_name = None
 
 
@@ -44,8 +44,7 @@ class InvestmentRystem(BaseAction):
         print("负责获取程序当前运行状态")
         print("负责调整程序运行状态")
         print("负责获取程序之后操作所需的信息")
-        self.read_config()
-        print(f"模拟获取信息：{self.config}")
+
         print("负责获取程序操作的最终目的")
         pass
 
@@ -62,7 +61,8 @@ class InvestmentRystem(BaseAction):
         print("负责再次验证程序当前运行状态")
         print("负责报错和通知执行者")
         print("负责记录日志")
-        x = input("任务是否完成？：")
+        # x = input("任务是否完成？：")
+        x = "True"
         if x == "True":
             self.finished = True
         pass

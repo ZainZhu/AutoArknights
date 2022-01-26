@@ -8,7 +8,7 @@ import aircv as ac
 import yaml
 
 
-device_name = "127.0.0.1:21503"
+device_name = "127.0.0.1:21513"
 
 def tuple_data(data):
     return eval((repr(data).replace("\'", "")))
@@ -49,14 +49,24 @@ def matchImg(imgsrc, imgobj, confidencevalue=0.5):  # imgsrc=原始图像，imgo
 
 
 def image_t_str():
-    image = Image.open(r'../temp/127.0.0.1_62025/sc.png') 
+    image = Image.open(r'../temp/127.0.0.1_21523/sc.png') 
     with open(r'./data/database.yaml', encoding="UTF-8") as f:
         database = yaml.load(f, Loader=yaml.Loader)
-    print(database) 
-    box = tuple_data(database['点击区域']['清除缓存'])  # 确定拷贝区域大小
+    # print(database) 
+    box = tuple_data(database['识别区域']['I_1'])  # 确定拷贝区域大小
     region = image.crop(box)  # 将im表示的图片对象拷贝到region中，大小为box
-    # image.show()
-    region.show()
+    # region = region.resize((100, 40),Image.ANTIALIAS)  
+    # region = region.convert('L')   
+    # threshold = 60
+    # table = []  
+    # for i in range(256):  
+    #     if i < threshold:
+    #         table.append(0) 
+    #     else:
+    #         table.append(1)
+    # region = region.point(table, '1')
+    # region = region.resize((200, 80),Image.ANTIALIAS) 
+    region.show() 
     # image = pyautogui.screenshot(r'D:\Project\git\AutoArknights\1_1.png', region=(564, 541, 216, 69))
     # print(im)
     # image = Image.open("bf/text.png")
@@ -80,11 +90,11 @@ def other_test():
     print(type(x))
     pass
 
-x = matchImg(r'../bf/image/sc_xzfd_jj2.png', r'../bf/image/xzfd_yes.png', 0.4)
-print(x)
+# x = matchImg(r'../bf/image/sc_xzfd_jj2.png', r'../bf/image/xzfd_yes.png', 0.4)
+# print(x)
 
 
-# image_t_str()
+image_t_str()
 
 
 # other_test()

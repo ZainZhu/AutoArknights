@@ -34,6 +34,7 @@ def matchImg(imgsrc, imgobj, confidencevalue=0.5):  # imgsrc=原始图像，imgo
     # sleep(2)
     print(x)
     adb_shell_tap(device_name, x)
+    imgsrc = 'r' + imgsrc
     image = Image.open(imgsrc)
     # image.show()
     imsrc = ac.imread(imgsrc)
@@ -48,38 +49,49 @@ def matchImg(imgsrc, imgobj, confidencevalue=0.5):  # imgsrc=原始图像，imgo
     return match_result
 
 
-def image_t_str():
-    image = Image.open(r'../temp/127.0.0.1_21523/sc.png') 
+def image_t_str(imgsrc):
+    # image = Image.open(r'../temp/127.0.0.1_21523/sc.png')
+    # imgsrc = 'r' + imgsrc
+    image = Image.open(imgsrc)  
     with open(r'./data/database.yaml', encoding="UTF-8") as f:
-        database = yaml.load(f, Loader=yaml.Loader)
+        database = yaml.load(f, Loader=yaml.Loader) 
     # print(database) 
     box = tuple_data(database['识别区域']['I_1'])  # 确定拷贝区域大小
     region = image.crop(box)  # 将im表示的图片对象拷贝到region中，大小为box
-    # region = region.resize((100, 40),Image.ANTIALIAS)  
-    # region = region.convert('L')   
-    # threshold = 60
-    # table = []  
-    # for i in range(256):  
-    #     if i < threshold:
-    #         table.append(0) 
-    #     else:
-    #         table.append(1)
-    # region = region.point(table, '1')
-    # region = region.resize((200, 80),Image.ANTIALIAS) 
-    region.show() 
-    # image = pyautogui.screenshot(r'D:\Project\git\AutoArknights\1_1.png', region=(564, 541, 216, 69))
-    # print(im)
-    # image = Image.open("bf/text.png")
-    # print(image)
+    # region.show()  
     text = pytesseract.image_to_string(region, lang='chi_sim')
-    print(text)
+    # print(text)
     textRegex = re.compile(r'(\w*)')
     text_filter = textRegex.search(text).group()
-    # print(text_filter)
+    print(text_filter)
+
+def image_t_int(imgsrc):
+    # image = Image.open(r'../temp/127.0.0.1_21523/sc.png')
+    image = Image.open(imgsrc)  
+    with open(r'./data/database.yaml', encoding="UTF-8") as f:
+        database = yaml.load(f, Loader=yaml.Loader) 
+    box = tuple_data(database['识别区域']['id'])  # 确定拷贝区域大小
+    region = image.crop(box)  # 将im表示的图片对象拷贝到region中，大小为box
+    region = region.resize((200, 40),Image.ANTIALIAS)  
+    region = region.convert('L')   
+    threshold = 150  
+    table = []  
+    for i in range(256):  
+        if i < threshold:
+            table.append(0) 
+        else:
+            table.append(1)
+    region = region.point(table, '1')
+    # region.show() 
+    text = pytesseract.image_to_string(region)
+    # print(text)
+    textRegex = re.compile(r'(\w*)')
+    text_filter = textRegex.search(text).group()
+    print(text_filter)
 
 
 def other_test():
-    with open(r'./data/database.yaml', encoding="UTF-8") as f:
+    with open('./data/database.yaml', encoding="UTF-8") as f:
         database = yaml.load(f, Loader=yaml.Loader)
     print(database)
     print(type(database['点击区域']['清除缓存']))
@@ -94,7 +106,9 @@ def other_test():
 # print(x)
 
 
-image_t_str()
+image_t_str(r'../temp/127.0.0.1_21523/sc.png')
+
+image_t_int(r'../bf/image/sc copy.png') 
 
 
 # other_test()

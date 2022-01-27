@@ -11,3 +11,5 @@
   清除缓存: !!python/tuple [50, 50, 200, 96]
   幻觉识别: !!python/tuple [630, 105, 690, 134]
   I_1: !!python/tuple [288, 380, 488, 417]
+  name: !!python/tuple [36, 386, 188, 424]
+  id: !!python/tuple [77, 423, 163, 441]
